@@ -28,9 +28,9 @@ const theme = {
   fontPrimary: "'Nunito', sans-serif",
   fontDisplay: "'Josefin Sans', sans-serif",
   HoverBoxShadow:
-      '5px 6px 8px 5px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
+    '5px 6px 8px 5px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
   BoxShadow:
-      '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
+    '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
   imageGradientLight: 'rgba(197 ,196 ,255, 0.8)',
   imageGradientDark: 'rgba(37, 115, 203, 0.8)',
 };

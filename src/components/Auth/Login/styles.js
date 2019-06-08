@@ -11,33 +11,32 @@ export const Wrapper = styled.div`
 `;
 
 export const InnerWrapper = styled.div`
-    display: flex;
+  display: flex;
 `;
 
 export const PictureWrapper = styled.div`
-    width: 50%;
-    @media (max-width: 1000px) {
+  width: 50%;
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
 export const FieldsWrapper = styled.div`
-    width: 50%;
-    padding: 5rem;
-    @media (max-width: 1000px) {
-        width: 100%;
+  width: 50%;
+  padding: 5rem;
+  @media (max-width: 1000px) {
+    width: 100%;
   }
 `;
 
-
 export const LoginPic = styled.img`
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 `;
 
 export const SocialIcons = styled.div`
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 `;

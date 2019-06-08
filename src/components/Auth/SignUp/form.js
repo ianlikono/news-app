@@ -1,33 +1,29 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import {
- Button, Checkbox, Form, Icon, Input, message, Tooltip 
-} from 'antd';
+import { Button, Checkbox, Form, Icon, Input, message, Tooltip } from 'antd';
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import {
- facebookProvider, fire, googleProvider, twitterProvider 
-} from '../../../firebase';
+import { facebookProvider, fire, googleProvider, twitterProvider } from '../../../firebase';
 import { SocialIcons } from './styles';
 
 const StyledForm = styled(Form)`
-       .login-form {
-           /* max-width: 300px; */
-           display: flex;
-           align-items: center;
-           height: 100%;
-       }
-       .login-form-forgot {
-           float: right;
-       }
-       .login-form-button {
-           width: 100%;
-       }
-   `;
+  .login-form {
+    /* max-width: 300px; */
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+`;
 
-const SignupForm = (props) => {
+const SignupForm = props => {
   const { getFieldDecorator } = props.form;
   const [confirmDirty, setConfirmDirty] = useState(false);
 
@@ -53,13 +49,14 @@ const SignupForm = (props) => {
     setConfirmDirty(confirmDirty || !!value);
   }
 
-
   async function handleSubmit(e) {
     e.preventDefault();
     props.form.validateFields(async (err, values) => {
       if (!err) {
         try {
-          const response = await fire.auth().createUserWithEmailAndPassword(values.Email, values.password);
+          const response = await fire
+            .auth()
+            .createUserWithEmailAndPassword(values.Email, values.password);
           if (response) {
             props.history.push('/login');
           }
@@ -107,10 +104,13 @@ const SignupForm = (props) => {
       <h2>Register</h2>
       <Form.Item label="Email" hasFeedback>
         {getFieldDecorator('Email', {
-          rules: [{ required: true, message: 'Please input your email!' }, {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          }],
+          rules: [
+            { required: true, message: 'Please input your email!' },
+            {
+              type: 'email',
+              message: 'The input is not valid E-mail!',
+            },
+          ],
         })(
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -120,9 +120,12 @@ const SignupForm = (props) => {
       </Form.Item>
       <Form.Item label="Password" hasFeedback>
         {getFieldDecorator('password', {
-          rules: [{ required: true, message: 'Please input your Password!' }, {
-            validator: validateToNextPassword,
-          }],
+          rules: [
+            { required: true, message: 'Please input your Password!' },
+            {
+              validator: validateToNextPassword,
+            },
+          ],
         })(
           <Input.Password
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -133,9 +136,12 @@ const SignupForm = (props) => {
       </Form.Item>
       <Form.Item label="Confirm Password" hasFeedback>
         {getFieldDecorator('confirm', {
-          rules: [{ required: true, message: 'Please confirm your password!' }, {
-            validator: compareToFirstPassword,
-          }],
+          rules: [
+            { required: true, message: 'Please confirm your password!' },
+            {
+              validator: compareToFirstPassword,
+            },
+          ],
         })(
           <Input.Password
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -151,7 +157,7 @@ const SignupForm = (props) => {
           initialValue: true,
         })(<Checkbox>Remember me</Checkbox>)}
         <Button type="primary" htmlType="submit" className="login-form-button">
-             Register
+          Register
         </Button>
       </Form.Item>
       <div>
@@ -167,10 +173,11 @@ const SignupForm = (props) => {
         <Tooltip placement="bottomLeft" title="Continue With Twitter">
           <Button onClick={onTwitterClicked} type="primary" shape="circle" icon="twitter" />
         </Tooltip>
-      </SocialIcons>
-      {' '}
+      </SocialIcons>{' '}
       <div style={{ marginTop: '3rem' }}>
-        <Link className="login-form-forgot" to="/login">Already have an account? login now!</Link>
+        <Link className="login-form-forgot" to="/login">
+          Already have an account? login now!
+        </Link>
       </div>
     </StyledForm>
   );

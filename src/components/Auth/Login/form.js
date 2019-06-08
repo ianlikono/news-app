@@ -1,14 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import {
- Button, Checkbox, Form, Icon, Input, message, Tooltip 
-} from 'antd';
+import { Button, Checkbox, Form, Icon, Input, message, Tooltip } from 'antd';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import {
- facebookProvider, fire, googleProvider, twitterProvider 
-} from '../../../firebase';
+import { facebookProvider, fire, googleProvider, twitterProvider } from '../../../firebase';
 import { SocialIcons } from './styles';
 
 const StyledForm = styled(Form)`
@@ -26,7 +22,7 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const LoginForm = (props) => {
+const LoginForm = props => {
   const { getFieldDecorator } = props.form;
 
   function handleSubmit(e) {
@@ -89,31 +85,31 @@ const LoginForm = (props) => {
             { required: true, message: 'Please input your email!' },
             {
               type: 'email',
-              message: 'The input is not valid E-mail!'
-            }
-          ]
+              message: 'The input is not valid E-mail!',
+            },
+          ],
         })(
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="Enter your email address"
-          />
+          />,
         )}
       </Form.Item>
       <Form.Item label="Password">
         {getFieldDecorator('password', {
-          rules: [{ required: true, message: 'Please input your Password!' }]
+          rules: [{ required: true, message: 'Please input your Password!' }],
         })(
           <Input.Password
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             placeholder="Enter your Password"
-          />
+          />,
         )}
       </Form.Item>
       <Form.Item>
         {getFieldDecorator('remember', {
           valuePropName: 'checked',
-          initialValue: true
+          initialValue: true,
         })(<Checkbox>Remember me</Checkbox>)}
         <Link className="login-form-forgot" to="/about">
           Forgot password
@@ -135,8 +131,7 @@ const LoginForm = (props) => {
         <Tooltip placement="bottomLeft" title="Continue With Twitter">
           <Button onClick={onTwitterClicked} type="primary" shape="circle" icon="twitter" />
         </Tooltip>
-      </SocialIcons>
-      {' '}
+      </SocialIcons>{' '}
       <div style={{ marginTop: '3rem' }}>
         <Link className="login-form-forgot" to="/signup">
           Don't have an account? register now!

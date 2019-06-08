@@ -3,9 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import loginPic from '../../../images/login.jpg';
 import LoginForm from './form';
-import {
- FieldsWrapper, InnerWrapper, LoginPic, PictureWrapper, Wrapper 
-} from './styles';
+import { FieldsWrapper, InnerWrapper, LoginPic, PictureWrapper, Wrapper } from './styles';
 
 const StyledCard = styled(Card)`
   margin-left: 20%;
