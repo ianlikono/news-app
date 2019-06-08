@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import Navbar from './components/Nav';
 import routes from './routes';
 import theme from './theme';
 
@@ -35,6 +36,7 @@ function App() {
       <BrowserRouter>
         <React.Fragment>
           <GlobalStyle />
+          <Navbar />
           {routes}
         </React.Fragment>
       </BrowserRouter>
