@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   background-color: ${props => props.theme.colorPurpleDark};
   height: 5rem;
   justify-content: space-around;
+  margin-bottom: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 `;
 
 export const InnerWrapper = styled.div`
@@ -24,6 +28,13 @@ export const SearchSection = styled.div`
 `;
 
 export const SearchIcon = styled.div`
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+`;
+
+export const CategoriesIcon = styled.div`
   display: none;
   @media (max-width: 1000px) {
     display: block;

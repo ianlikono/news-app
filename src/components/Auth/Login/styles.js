@@ -2,8 +2,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: auto;
+  width: 80vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,6 @@ export const FieldsWrapper = styled.div`
 
 export const LoginPic = styled.img`
   width: 100%;
-  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;

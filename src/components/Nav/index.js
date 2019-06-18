@@ -1,6 +1,8 @@
-import { Avatar, Button, Input } from 'antd';
+import { Avatar, Button, Input, Tooltip } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
+  CategoriesIcon,
   IconsSections,
   InnerWrapper,
   SearchIcon,
@@ -16,12 +18,27 @@ const Navbar = () => {
     <Wrapper>
       <InnerWrapper>
         <IconsSections>
-          <Button size="large" shape="circle" icon="home" />
-          <SearchIcon>
-            <Button size="large" shape="circle" icon="search" />
-          </SearchIcon>
-          <Button size="large" shape="circle" icon="bell" />
-          <Button size="large" shape="circle" icon="message" />
+          <Link to="/">
+            <Tooltip placement="bottom" title="Home">
+              <Button type="primary" size="large" shape="circle" icon="home" />
+            </Tooltip>
+          </Link>
+          <Tooltip placement="bottom" title="Search">
+            <SearchIcon>
+              <Button type="primary" size="large" shape="circle" icon="search" />
+            </SearchIcon>
+          </Tooltip>
+          <Tooltip placement="bottom" title="catefories">
+            <CategoriesIcon>
+              <Button type="primary" size="large" shape="circle" icon="profile" />
+            </CategoriesIcon>
+          </Tooltip>
+          <Tooltip placement="bottom" title="notifications">
+            <Button type="primary" size="large" shape="circle" icon="bell" />
+          </Tooltip>
+          <Tooltip placement="bottom" title="messages">
+            <Button type="primary" size="large" shape="circle" icon="message" />
+          </Tooltip>
         </IconsSections>
         <SearchSection>
           <Search

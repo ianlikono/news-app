@@ -6,7 +6,7 @@ const theme = {
   textColorDark: '#AAAAAA',
   paragraphColor: '#888888',
   BorderColor: '#707070',
-
+  linkColor: '#5F26FA',
   fontSize: '0.7rem',
 
   inputBorderColor: '#c6c6c6',

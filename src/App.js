@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Navbar from './components/Nav';
+import { MeContext } from './context/user';
+import { fire } from './firebase';
 import routes from './routes';
 import theme from './theme';
 
@@ -30,14 +32,39 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const AppWrapper = styled.div`
+  /* margin-top: 5rem; */
+`;
+
 function App() {
+  const { updateToken, updateMe } = useContext(MeContext);
+  useEffect(() => {
+    fire.auth().onAuthStateChanged(user => {
+      if (user) {
+        updateMe(user);
+        fire
+          .auth()
+          .currentUser.getIdToken(true)
+          .then(token => {
+            updateToken(token);
+          });
+      } else {
+        fire
+          .auth()
+          .signInAnonymously()
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    });
+  }, [updateMe, updateToken]);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <React.Fragment>
           <GlobalStyle />
           <Navbar />
-          {routes}
+          <AppWrapper>{routes}</AppWrapper>
         </React.Fragment>
       </BrowserRouter>
     </ThemeProvider>
