@@ -1,6 +1,7 @@
 import { Avatar, Button, Input, Tooltip } from 'antd';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { MeContext } from '../../context/user';
 import {
   CategoriesIcon,
   IconsSections,
@@ -14,6 +15,13 @@ import {
 const { Search } = Input;
 
 const Navbar = () => {
+  const { me } = useContext(MeContext);
+  const isLoggedIn = () => {
+    if (me && !me.isAnonymous) {
+      return true;
+    }
+    return false;
+  };
   return (
     <Wrapper>
       <InnerWrapper>
@@ -49,11 +57,19 @@ const Navbar = () => {
           />
         </SearchSection>
         <UserSection>
-          <Avatar
-            shape="square"
-            size="large"
-            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          />
+          {isLoggedIn() ? (
+            <Avatar
+              shape="square"
+              size="large"
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          ) : (
+            <Link to="/login">
+              <Tooltip placement="bottom" title="Login">
+                <Button type="primary">Login</Button>
+              </Tooltip>
+            </Link>
+          )}
         </UserSection>
       </InnerWrapper>
     </Wrapper>

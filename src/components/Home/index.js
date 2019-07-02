@@ -1,10 +1,10 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-shadow */
 import { Card, Spin } from 'antd';
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { MeContext } from '../../context/user';
+import request from '../../utils/request';
 import ArticleCard from '../ArticleCard';
 import {
   CardBody,
@@ -25,19 +25,12 @@ const Home = () => {
   const [articles, setArticles] = useState(null);
   useEffect(() => {
     async function getArticles() {
-      try {
-        const response = await axios.get(
-          'https://us-central1-calender-1a0d2.cloudfunctions.net/routes/techarticles',
-          {
-            headers: {
-              // eslint-disable-next-line prefer-template
-              Authorization: 'Bearer ' + firebaseToken,
-            },
-          },
-        );
-        setArticles(response.data.articles.articles);
-      } catch (error) {
-        console.log(error);
+      const response = await request(
+        'https://us-central1-calender-1a0d2.cloudfunctions.net/routes/techarticles',
+        firebaseToken,
+      );
+      if (response) {
+        setArticles(response.articles.articles);
       }
     }
     getArticles();
@@ -45,16 +38,11 @@ const Home = () => {
 
   async function getArticles(param) {
     try {
-      const response = await axios.get(
+      const response = await request(
         `https://us-central1-calender-1a0d2.cloudfunctions.net/routes/${param}`,
-        {
-          headers: {
-            // eslint-disable-next-line prefer-template
-            Authorization: 'Bearer ' + firebaseToken,
-          },
-        },
+        firebaseToken,
       );
-      setArticles(response.data.articles.articles);
+      setArticles(response.articles.articles);
     } catch (error) {
       console.log(error);
     }
